@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import co.edu.udistrital.model.DivisionException;
 import co.edu.udistrital.model.Operaciones;
 import co.edu.udistrital.view.VentanaPrincipal;
 
@@ -40,7 +41,12 @@ public class Controller implements ActionListener{
 			}else if(comando.equals("MULTIPLICAR")) {
 				vista.getPr().getResultados().setText(acum  + x + " * " + y + " = " + Operaciones.multiplicar(x, y) + "\n");
 			}else if(comando.equals("DIVIDIR")) {
+				try {
 				vista.getPr().getResultados().setText(acum  + x + " / " + y + " = " + Operaciones.dividir(x, y) + "\n");
+				}
+				catch(DivisionException a){
+					vista.getPr().getResultados().setText(a.getMessage());
+				}
 			}
 		}
 		catch (NumberFormatException nfe) {

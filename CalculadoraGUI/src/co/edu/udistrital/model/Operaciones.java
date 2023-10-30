@@ -14,7 +14,10 @@ public class Operaciones {
 		return (a * b);
 	}
 	
-	public static double dividir(int a, int b) {
+	public static double dividir(int a, int b) throws DivisionException{
+		if(b==0)
+			throw new DivisionException();
+		
 		return ((double)a / (double)b);
 	}
 }
